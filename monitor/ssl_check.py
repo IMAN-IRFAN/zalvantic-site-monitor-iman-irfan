@@ -1,3 +1,4 @@
+import certifi
 import socket
 import ssl
 from datetime import datetime, timezone
@@ -6,7 +7,7 @@ from urllib.parse import urlparse
 
 def check_ssl(url: str, timeout: float = 10.0) -> dict:
     host = urlparse(url).hostname or url
-    context = ssl.create_default_context()
+    context = ssl.create_default_context(cafile=certifi.where())
     try:
         with socket.create_connection((host, 443), timeout=timeout) as sock:
             with context.wrap_socket(sock, server_hostname=host) as tls:
