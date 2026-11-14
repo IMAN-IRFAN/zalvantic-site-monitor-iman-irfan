@@ -1,2 +1,6 @@
    httpx
    certifi
+
+   sqlalchemy
+apscheduler
+pytest
