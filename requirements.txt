@@ -4,3 +4,4 @@
    sqlalchemy
 apscheduler
 pytest
+beautifulsoup4
