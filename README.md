@@ -39,3 +39,19 @@ python -m monitor.crawler http://localhost:8000/index.html --delay 0.2
 Options: `--depth` (default 2), `--max-pages` (default 20), `--delay` seconds between requests (default 1.0).
 The crawler obeys robots.txt, sends a clear User-Agent, and uses HEAD first, then GET if HEAD is not supported.
 Only crawl sites you own or have permission to test.
+
+## Week 4: SEO checks
+
+Start the SEO test site in one terminal:
+```
+python -m http.server 8001 --directory tests/seosite
+```
+
+Run the audit from another terminal:
+```
+python -m monitor.seo http://localhost:8001/index.html --delay 0.2
+```
+
+Each page is scored out of 100: title (25), meta description (25), one H1 (20), canonical link (15), image alt text (15).
+Site score = 80% of the average page score + 10 for sitemap.xml + 10 for robots.txt.
+Only audit sites you own or have permission to test.
